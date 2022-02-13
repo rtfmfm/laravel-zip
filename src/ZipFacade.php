@@ -1,5 +1,5 @@
 <?php
-namespace ZanySoft\Zip;
+namespace Rtfmfm\Zip;
 
 use Illuminate\Support\Facades\Facade;
 

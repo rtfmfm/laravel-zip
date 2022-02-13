@@ -1,15 +1,14 @@
-<?php namespace ZanySoft\Zip;
+<?php namespace Rtfmfm\Zip;
 
 use \ZipArchive;
 use \Exception;
 
 /**
- * ZanySoft\Zip - ZipArchive toolbox
+ * Rtfmfm\Zip - ZipArchive toolbox
  *
  * This class provide methods to handle single zip archive
  *
- * @package     ZanySoft\Zip
- * @author      ZanySoft <info@zanysoft.co>
+ * @package     Rtfmfm\Zip
  * @license     MIT
  *
  */
@@ -27,7 +26,7 @@ class Zip {
      *
      * @var bool
      */
-    private $supported_skip_modes = array("HIDDEN", "ZANYSOFT", "ALL", "NONE");
+    private $supported_skip_modes = array("HIDDEN", "RTFMFM", "ALL", "NONE");
 
     /**
      * Mask for the extraction folder (if it should be created)
@@ -117,7 +116,7 @@ class Zip {
      *
      * @param   string $zip_file ZIP file name
      *
-     * @return  \ZanySoft\Zip\Zip
+     * @return  \Rtfmfm\Zip\Zip
      */
     public static function open($zip_file) {
 
@@ -168,7 +167,7 @@ class Zip {
      * @param   string $zip_file ZIP file name
      * @param   bool $overwrite overwrite existing file (if any)
      *
-     * @return  \ZanySoft\Zip\Zip
+     * @return  \Rtfmfm\Zip\Zip
      */
     public static function create($zip_file, $overwrite = false) {
 
@@ -201,9 +200,9 @@ class Zip {
     /**
      * Set files to skip
      *
-     * @param   string $mode [HIDDEN, ZANYSOFT, ALL, NONE]
+     * @param   string $mode [HIDDEN, RTFMFM, ALL, NONE]
      *
-     * @return  \ZanySoft\Zip\Zip
+     * @return  \Rtfmfm\Zip\Zip
      */
     final public function setSkipped($mode) {
 
@@ -220,7 +219,7 @@ class Zip {
     }
 
     /**
-     * Get current skip mode (HIDDEN, ZANYSOFT, ALL, NONE)
+     * Get current skip mode (HIDDEN, RTFMFM, ALL, NONE)
      *
      * @return  string
      */
@@ -235,7 +234,7 @@ class Zip {
      *
      * @param   string $password
      *
-     * @return  \ZanySoft\Zip\Zip
+     * @return  \Rtfmfm\Zip\Zip
      */
     final public function setPassword($password) {
 
@@ -261,7 +260,7 @@ class Zip {
      *
      * @param   string $path
      *
-     * @return  \ZanySoft\Zip\Zip
+     * @return  \Rtfmfm\Zip\Zip
      */
     final public function setPath($path) {
 
@@ -291,7 +290,7 @@ class Zip {
      *
      * @param   int $mask
      *
-     * @return  \ZanySoft\Zip\Zip
+     * @return  \Rtfmfm\Zip\Zip
      */
     final public function setMask($mask) {
 
@@ -324,7 +323,7 @@ class Zip {
      *
      * @param   \ZipArchive $zip
      *
-     * @return  \ZanySoft\Zip\Zip
+     * @return  \Rtfmfm\Zip\Zip
      */
     final public function setArchive(ZipArchive $zip) {
 
@@ -467,7 +466,7 @@ class Zip {
      * @param   mixed $file_name_or_array filename to add or an array of filenames
      * @param   bool $flatten_root_folder in case of directory, specify if root folder should be flatten or not
      *
-     * @return  \ZanySoft\Zip\Zip
+     * @return  \Rtfmfm\Zip\Zip
      */
     public function add($file_name_or_array, $flatten_root_folder = false) {
 
@@ -508,7 +507,7 @@ class Zip {
      *
      * @param   mixed $file_name_or_array filename to delete or an array of filenames
      *
-     * @return  \ZanySoft\Zip\Zip
+     * @return  \Rtfmfm\Zip\Zip
      */
     public function delete($file_name_or_array) {
 
@@ -576,7 +575,7 @@ class Zip {
                 continue;
             }
 
-            if ($name[0] == "." AND @$name[1] == "_" AND in_array($this->skip_mode, array("ZANYSOFT", "ALL"))) {
+            if ($name[0] == "." AND @$name[1] == "_" AND in_array($this->skip_mode, array("RTFMFM", "ALL"))) {
                 continue;
             }
 
@@ -610,7 +609,7 @@ class Zip {
                 return;
             }
 
-            if ($real_name[0] == "." AND @$real_name[1] == "_" AND in_array($this->skip_mode, array("ZANYSOFT", "ALL"))) {
+            if ($real_name[0] == "." AND @$real_name[1] == "_" AND in_array($this->skip_mode, array("RTFMFM", "ALL"))) {
                 return;
             }
 

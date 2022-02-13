@@ -1,9 +1,10 @@
-# zanysoft/laravel-zip
+# rtfmfm/laravel-zip
 
-[![Downloads](https://img.shields.io/packagist/dt/zanysoft/laravel-zip.svg?style=flat-square)](https://packagist.org/packages/zanysoft/laravel-zip)
-[![GitHub license](https://img.shields.io/badge/License-MIT-informational.svg)](https://github.com/zanysoft/laravel-zip/blob/master/LICENSE)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-informational.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
-[![GitHub tag](https://img.shields.io/github/tag/ZanySoft/laravel-zip.svg?style=flat&logo=laravel&color=informational)](https://github.com/zanysoft/laravel-zip/tags)
+[![Downloads](https://img.shields.io/packagist/dt/rtfmfm/laravel-zip.svg?style=flat-square)](https://packagist.org/packages/rtfmfm/laravel-zip)
+[![GitHub license](https://img.shields.io/badge/License-MIT-informational.svg)](https://github.com/rtfmfm/laravel-zip/blob/master/LICENSE)
+[![GitHub tag](https://img.shields.io/github/tag/rtfmfm/laravel-zip.svg?style=flat&logo=laravel&color=informational)](https://github.com/rtfmfm/laravel-zip/tags)
+
+## This package is a Fork of `ZanySoft/laravel-zip`, which is no longer maintained
 
 
 > laravel-zip is the world's leading zip utility for file compression and backup.
@@ -13,20 +14,20 @@ This library was written to simplify and automate Zip files management using [PH
 ### Installation
 Require this package in your composer.json and update composer. This will download the package.
 
-    composer require zanysoft/laravel-zip
+    composer require rtfmfm/laravel-zip
 
 After updating composer, add the ServiceProvider to the providers array in config/app.php
 
-    ZanySoft\Zip\ZipServiceProvider::class,
+    Rtfmfm\Zip\ZipServiceProvider::class,
 
 You can optionally use the facade for shorter code. Add this to your facades:
 
-    'Zip' => ZanySoft\Zip\ZipFacade::class,
+    'Zip' => Rtfmfm\Zip\ZipFacade::class,
 
 
 ## Zip usage
 
-use `ZanySoft\Zip\Zip` class only use `Zip` is made to handle a zip file.
+use `Rtfmfm\Zip\Zip` class only use `Zip` is made to handle a zip file.
 
 - include the Zip class at top:
 ```php
@@ -38,28 +39,28 @@ use Zip;
 
 - Open zip file:
 
-    ```php    
+    ```php
     $zip = Zip::open('file.zip');
 
     ```
 
 - Create zip file:
 
-    ```php    
+    ```php
     $zip = Zip::create('file.zip');
 
     ```
 
 - Check zip file:
 
-    ```php    
+    ```php
     $is_valid = Zip::check('file.zip');
 
     ```
 
 - Extract zip file:
 
-    ```php    
+    ```php
     // extract whole archive
     $zip->extract('/path/to/uncompressed/files');
 
@@ -70,10 +71,10 @@ use Zip;
     $zip->extract('/path/to/uncompressed/files', array('file1','file2'));
 
     ```
-	
+
 - Check if zip has a file:
 
-    ```php    
+    ```php
     // Check if archive has a file
     $zip->has('/path/to/file/in/archive');
 
@@ -90,7 +91,7 @@ use Zip;
 
 - Add a file/directory to zip:
 
-    ```php    
+    ```php
     $zip->add('/path/to/my/file');
 
     // declaring path
@@ -106,7 +107,7 @@ use Zip;
 
 - Add multiple files/directories to zip:
 
-    ```php    
+    ```php
     // using array as parameter
     $zip->add( array('/path/to/my/file1', '/path/to/my/file2');
 
@@ -120,14 +121,14 @@ use Zip;
 
 - Delete a file/directory from zip:
 
-    ```php    
+    ```php
     $zip->delete('file');
 
     ```
 
 - Delete multiple files/directories from zip:
 
-    ```php    
+    ```php
     // using array as parameter
     $zip->delete( array('file1', 'file2') );
 
@@ -138,14 +139,14 @@ use Zip;
 
 - List content of zip file
 
-    ```php    
+    ```php
     $zip->listFiles();
 
     ```
 
 - Close zip file
 
-    ```php    
+    ```php
     $zip->close();
 
     ```
@@ -154,7 +155,7 @@ use Zip;
 
 - Skip hidden files while adding directories:
 
-    ```php    
+    ```php
     // set mode
     $zip->setSkipped('HIDDEN');
 
@@ -165,7 +166,7 @@ use Zip;
 
 - Use password for zip extraction:
 
-    ```php    
+    ```php
     // set password
     $zip->setPassword('slartibartfast');
 
@@ -176,7 +177,7 @@ use Zip;
 
 - Use a mask != 0777 for created folders:
 
-    ```php    
+    ```php
     // set mask
     $zip->setMask(0644);
 
@@ -187,11 +188,11 @@ use Zip;
 
 ## ZipManager usage
 
-The `\ZanySoft\Zip\ZipManager` can handle multiple `ZanySoft\Zip\Zip` objects.
+The `\Rtfmfm\Zip\ZipManager` can handle multiple `Rtfmfm\Zip\Zip` objects.
 
 - include the Zip and ZipManager class at top:
 ```php
-use ZanySoft\Zip\ZipManager;
+use Rtfmfm\Zip\ZipManager;
 use Zip;
 ```
 
@@ -199,7 +200,7 @@ use Zip;
 
 - Init the manager and register Zips:
 
-    ```php    
+    ```php
     // init manager
     $manager = new ZipManager();
 
@@ -214,7 +215,7 @@ use Zip;
 
 - Basic zips management:
 
-    ```php    
+    ```php
     // get a list of registered zips
     $list = $manager->listZips();
 
@@ -228,7 +229,7 @@ use Zip;
 
 - Add files to all zips:
 
-    ```php    
+    ```php
     $manager-> = new ZipManager();
 
     // register existing zips
@@ -242,7 +243,7 @@ use Zip;
 
 - Extract zips:
 
-    ```php    
+    ```php
     // separate content in folders
     $extract = $manager->extract('/path/to/uncompressed/files', true);
 
@@ -259,7 +260,7 @@ use Zip;
 
 - Merge zips:
 
-    ```php    
+    ```php
     // separate content in folders
     $manager->merge('/path/to/output/file.zip', true);
 
@@ -270,7 +271,7 @@ use Zip;
 
 - Close zips:
 
-    ```php    
+    ```php
     $manager->close();
 
     ```
@@ -279,7 +280,7 @@ use Zip;
 
 - Declare path from which add files:
 
-    ```php    
+    ```php
     // set path
     $zip->setPath('/path/to/files');
 
@@ -290,7 +291,7 @@ use Zip;
 
 - Use a mask != 0777 for created folders
 
-    ```php    
+    ```php
     // set masks
     $manager->setMask(0644);
 
